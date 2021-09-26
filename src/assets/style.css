@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer base {
+  body {
+    @apply bg-gray-900 text-gray-200 p-5 mx-auto;
+  }
+}

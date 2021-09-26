@@ -1,18 +1,23 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="container mx-auto">
+    <Banner msg="NewsAPi with Vue 3" />
+    <div>
+      <input type="text" v-model="search" class="p-3 rounded m-2" />
+      <Button :loading="loading" :func="process" />
+    </div>
+    <Article
+      v-for="(article, index) in articles"
+      :key="index"
+      :article="article"
+    />
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+<script setup>
+import Banner from "@/components/Banner.vue";
+import Button from "@/components/Button.vue";
+import Article from "@/components/Article.vue";
+import { useFetchNews } from "@/composables/News";
 
-export default {
-  name: "Home",
-  components: {
-    HelloWorld,
-  },
-};
+const { process, loading, articles, search } = useFetchNews();
 </script>
